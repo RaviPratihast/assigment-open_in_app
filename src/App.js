@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header bg-red-200">
-        Assingment
+       Project Setup!!!
       </header>
     </div>
   );
