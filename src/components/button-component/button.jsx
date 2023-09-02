@@ -1,0 +1,5 @@
+import React from "react";
+
+export const Button = ({ className, onClick, children }) => {
+  return <button className={className}>{children}</button>;
+};

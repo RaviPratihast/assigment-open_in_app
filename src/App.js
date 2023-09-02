@@ -1,11 +1,12 @@
 // import logo from './logo.svg';
 import "./App.css";
+import { SignIn } from "./pages/auth-page/sign-in-page";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header bg-red-200">
-       Project Setup!!!
+      <header className="App-header">
+        <SignIn />
       </header>
     </div>
   );
