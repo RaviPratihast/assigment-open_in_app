@@ -10,7 +10,6 @@ export const BarChart = ({ chartData }) => {
           plugins: {
             title: {
               display: false,
-              text: "Users Gained between 2016-2020",
             },
             legend: {
               display: false,
