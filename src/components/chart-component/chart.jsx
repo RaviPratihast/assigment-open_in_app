@@ -48,7 +48,7 @@ const BarChartLayout = () => {
   );
 };
 const PieChartLayout = () => {
-  const [pieChartData, setChartData] = useState(initialState);
+  const [pieChartData] = useState(initialState);
 
   return (
     <div>

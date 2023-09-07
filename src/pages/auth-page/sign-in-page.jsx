@@ -1,7 +1,12 @@
 import React from "react";
 import { Button } from "../../components/component-index";
+import { useNavigate } from "react-router-dom";
 
 export const SignIn = () => {
+  const navigate = useNavigate();
+  function handleClick() {
+    navigate("/dashboard");
+  }
   return (
     <div>
       <div className="flex flex-col lg:flex-row h-screen bg-gray-100">
@@ -34,7 +39,10 @@ export const SignIn = () => {
             </defs>
           </svg>
           <p className="text-2xl font-bold absolute top-12 left-14">LOGO</p>
-          <p className="text-7xl font-bold absolute top-50 left-[14rem]">
+          <p
+            className="text-7xl font-bold absolute top-50 left-[14rem] cursor-pointer"
+            onClick={() => handleClick()}
+          >
             Board.
           </p>
           <div className=" flex justify-between items-center  absolute bottom-10 left-[10rem] w-52">
