@@ -39,7 +39,7 @@ const initialState = {
 };
 
 const BarChartLayout = () => {
-  const [barChartData, setBarChartData] = useState(initialState);
+  const [barChartData] = useState(initialState);
 
   return (
     <div>
