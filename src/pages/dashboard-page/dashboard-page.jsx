@@ -8,8 +8,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Modal from "../../components/modal-window-componet/modal-window";
 export const Dashboard = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { user, logout } = useAuth0();
-  console.log("das uesr", user);
+  const { user, isAuthenticated, logout } = useAuth0();
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -21,7 +20,7 @@ export const Dashboard = () => {
   const handleLogout = () => logout();
   return (
     <div className="h-screen flex flex-col md:flex-row p-7  bg-gray-100">
-      {/* Left Div (20% width on all screens) */}
+      {/* Left Div */}
       <div className="w-50 md:w-50 bg-buttonBlue p-8 flex flex-col justify-between rounded-xl ">
         {/* Logo */}
         <div className=" flex flex-col ">
@@ -73,44 +72,44 @@ export const Dashboard = () => {
                 <path
                   d="M7.3 17.2H4.6C3.64522 17.2 2.72955 16.8207 2.05442 16.1456C1.37928 15.4704 1 14.5548 1 13.6V5.49999C1 4.54521 1.37928 3.62954 2.05442 2.95441C2.72955 2.27928 3.64522 1.89999 4.6 1.89999H14.5C15.4548 1.89999 16.3705 2.27928 17.0456 2.95441C17.7207 3.62954 18.1 4.54521 18.1 5.49999V8.19999"
                   stroke="white"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M6.39999 1V2.8"
                   stroke="white"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M12.7 1V2.8"
                   stroke="white"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWith="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M1 6.39999H18.1"
                   stroke="white"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M15.85 13.2787L14.5 14.6287"
                   stroke="white"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M14.5 19C16.9853 19 19 16.9853 19 14.5C19 12.0147 16.9853 10 14.5 10C12.0147 10 10 12.0147 10 14.5C10 16.9853 12.0147 19 14.5 19Z"
                   stroke="white"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
               Schedules
@@ -157,7 +156,7 @@ export const Dashboard = () => {
         </div>
       </div>
 
-      {/* Right Div (Remaining width on all screens) */}
+      {/* Right Div */}
       <div className="flex-1 ml-16 mr-8">
         {/* Div 1 - Dashboard Header */}
         <div className="flex justify-between p-2  ">
@@ -204,7 +203,8 @@ export const Dashboard = () => {
             </svg>
             {/* Avatar */}
             <img
-              src={user.picture}
+              // src={user.picture}
+              src={isAuthenticated ? user.picture : "/assets/image 1.png"}
               alt="Avatar"
               className="h-6 w-6 rounded-full cursor-pointer"
             />
@@ -365,31 +365,6 @@ export const Dashboard = () => {
                 onClick={openModal}
               >
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M26 10.0049C26.8835 10.0049 27.5997 10.7211 27.5997 11.6046L27.5997 24.7097L40.7048 24.7096C41.5883 24.7096 42.3045 25.4258 42.3045 26.3093C42.3045 27.1927 41.5883 27.9089 40.7048 27.9089L27.5998 27.909L27.5998 41.0139C27.5998 41.8974 26.8836 42.6136 26.0002 42.6136C25.1167 42.6136 24.4005 41.8974 24.4005 41.0139L24.4004 27.909L11.2953 27.9089C10.4119 27.9089 9.69567 27.1927 9.69568 26.3092C9.69568 25.4258 10.4119 24.7096 11.2953 24.7096L24.4004 24.7097L24.4003 11.6046C24.4003 10.7211 25.1165 10.0049 26 10.0049Z"
-                  fill="#999CA0"
-                />
-              </svg>
-              <h6 className="text-sm">Add Profile</h6>
-              <Modal isOpen={isModalOpen} onClose={closeModal} />
-            </div>
-          </div>
-        </div>
-        {/* <div className="flex flex-col sm:flex-row justify-between gap-2 h-auto sm:h-72 mt-4 ml-2 mr-2">
-          <div className="bg-white sm:h-72 flex-1 rounded-lg">hello</div>
-          <div className="bg-white h-auto sm:h-72 flex-1 rounded-lg">
-            <div className="flex flex-col h-full items-center justify-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="52"
-                height="52"
-                viewBox="0 0 52 52"
-                fill="none"
-                onClick={openModal}
-                className="cursor-pointer"
-              >
-                <path
                   fillRule="evenodd"
                   clipRule="evenodd"
                   d="M26 10.0049C26.8835 10.0049 27.5997 10.7211 27.5997 11.6046L27.5997 24.7097L40.7048 24.7096C41.5883 24.7096 42.3045 25.4258 42.3045 26.3093C42.3045 27.1927 41.5883 27.9089 40.7048 27.9089L27.5998 27.909L27.5998 41.0139C27.5998 41.8974 26.8836 42.6136 26.0002 42.6136C25.1167 42.6136 24.4005 41.8974 24.4005 41.0139L24.4004 27.909L11.2953 27.9089C10.4119 27.9089 9.69567 27.1927 9.69568 26.3092C9.69568 25.4258 10.4119 24.7096 11.2953 24.7096L24.4004 24.7097L24.4003 11.6046C24.4003 10.7211 25.1165 10.0049 26 10.0049Z"
@@ -400,7 +375,7 @@ export const Dashboard = () => {
               <Modal isOpen={isModalOpen} onClose={closeModal} />
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
     </div>
   );
