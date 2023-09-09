@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "../../components/component-index";
 import { useNavigate } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const SignIn = () => {
   const navigate = useNavigate();
-  function handleClick() {
-    navigate("/dashboard");
+  // function handleClick() {
+  //   navigate("/dashboard");
+  // }
+  const { loginWithRedirect, isAuthenticated } = useAuth0();
+
+  function loginHandler() {
+    loginWithRedirect();
   }
+
+  isAuthenticated && navigate("/dashboard");
+
   return (
     <div>
       <div className="flex flex-col lg:flex-row h-screen bg-gray-100">
@@ -39,10 +48,7 @@ export const SignIn = () => {
             </defs>
           </svg>
           <p className="text-2xl font-bold absolute top-12 left-14">LOGO</p>
-          <p
-            className="text-7xl font-bold absolute top-50 left-[14rem] cursor-pointer"
-            onClick={() => handleClick()}
-          >
+          <p className="text-7xl font-bold absolute top-50 left-[14rem] cursor-pointer">
             Board.
           </p>
           <div className=" flex justify-between items-center  absolute bottom-10 left-[10rem] w-52">
@@ -116,7 +122,10 @@ export const SignIn = () => {
             {/* google and apple login */}
 
             <div className="flex justify-between mt-4">
-              <Button className=" flex justify-evenly bg-white items-center text-xs rounded-lg h-8 w-44 text-gray-500 tracking-wide">
+              <Button
+                className=" flex justify-evenly bg-white items-center text-xs rounded-lg h-8 w-44 text-gray-500 tracking-wide"
+                onClick={(e) => loginHandler()}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -155,7 +164,10 @@ export const SignIn = () => {
                 </svg>
                 Sign in with Google
               </Button>
-              <Button className=" flex justify-evenly  bg-white items-center text-xs text-gray-500 rounded-lg h-8 w-44 tracking-wide">
+              <Button
+                className=" flex justify-evenly  bg-white items-center text-xs text-gray-500 rounded-lg h-8 w-44 tracking-wide"
+                onClick={() => console.log("helo")}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="14"

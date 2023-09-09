@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import {
   BarChartLayout,
   PieChartLayout,
+  Button,
 } from "../../components/component-index";
+import { useAuth0 } from "@auth0/auth0-react";
 import Modal from "../../components/modal-window-componet/modal-window";
 export const Dashboard = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const { user, logout } = useAuth0();
+  console.log("das uesr", user);
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -14,6 +17,8 @@ export const Dashboard = () => {
   const closeModal = () => {
     setIsModalOpen(false);
   };
+
+  const handleLogout = () => logout();
   return (
     <div className="h-screen flex flex-col md:flex-row p-7  bg-gray-100">
       {/* Left Div (20% width on all screens) */}
@@ -199,10 +204,11 @@ export const Dashboard = () => {
             </svg>
             {/* Avatar */}
             <img
-              src="/assets/image 1.png"
+              src={user.picture}
               alt="Avatar"
               className="h-6 w-6 rounded-full cursor-pointer"
             />
+            <Button onClick={() => handleLogout()}>Logout</Button>
           </div>
         </div>
 
